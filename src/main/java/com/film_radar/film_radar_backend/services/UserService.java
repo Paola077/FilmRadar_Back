@@ -9,26 +9,26 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.Optional;
 
-    @Service
-    public class UserService {
+@Service
+public class UserService {
 
-        private final UserRepository userRepository;
+    private final UserRepository userRepository;
 
-        public UserService(UserRepository userRepository){
-            this.userRepository = userRepository;
+    public UserService(UserRepository userRepository){
+        this.userRepository = userRepository;
 
-        }
-
-        public ResponseEntity<Object> addNewUser(User user){
-            if(userRepository.existsByEmail(user.getEmail())) {
-                return new ResponseEntity<>("Este usuario ya se encuentra registrado", HttpStatus.CREATED);
-            }
-
-            user.setCreatedAt(new Date().getTime());
-            userRepository.save(user);
-            return new ResponseEntity<>("El usuario se ha registrado con exito!", HttpStatus.CREATED);
-        }
-        public Optional<User> getUserByUsername (String username) {
-            return userRepository.findByUsername(username);
-        }
     }
+
+    public ResponseEntity<Object> addNewUser(User user){
+        if(userRepository.existsByEmail(user.getEmail())) {
+            return new ResponseEntity<>("Este usuario ya se encuentra registrado", HttpStatus.CREATED);
+        }
+
+        user.setCreatedAt(new Date().getTime());
+        userRepository.save(user);
+        return new ResponseEntity<>("El usuario se ha registrado con exito!", HttpStatus.CREATED);
+    }
+    public Optional<User> getUserByUsername (String username) {
+        return userRepository.findByUsername(username);
+    }
+}

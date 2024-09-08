@@ -33,7 +33,10 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST,"/auth/logIn").permitAll()
                         .requestMatchers(HttpMethod.POST,"/auth/signIn").permitAll()
                         .requestMatchers(HttpMethod.GET,"/auth/movies").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/auth/review").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/movies").authenticated()
+                        .requestMatchers(HttpMethod.POST,"/api/rating").authenticated()
+                        .requestMatchers(HttpMethod.GET,"/api/review").authenticated()
                 ).addFilterAfter(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
