@@ -1,9 +1,11 @@
 package com.film_radar.film_radar_backend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-
 import java.text.DecimalFormat;
+import java.util.Collections;
 import java.util.Set;
+
 
 @Entity
 @Table(name = "movies")
@@ -13,23 +15,23 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "title", length = 50, nullable = false)
+    @Column(name = "title", length = 255, nullable = false)
     private String title;
 
-    @Column(name = "release_year", nullable = false)
-    private int release_year;
+    @Column(name = "release_date", nullable = false)
+    private String release_date;
 
-    @Column(name = "rating", nullable = false)
-    private float rating;
+    @Column(name = "popularity", nullable = false)
+    private float popularity;
 
-    @Column(name = "overview", length = 900, nullable = false)
+    @Column(name = "overview", length = 2000, nullable = false)
     private String overview;
 
-    @Column(name = "poster_url", length = 250, nullable = false )
-    private String poster_url;
+    @Column(name = "backdrop_path", length = 500, nullable = false )
+    private String backdrop_path;
 
     @Column(name = "tmdb_id", unique = true, nullable = false)
-    private int tmdb_id;
+    private int tmdbId;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -38,11 +40,10 @@ public class Movie {
             inverseJoinColumns = @JoinColumn(name = "genre_id")
     )
 
-    private Set<Genre> genres;
+    private Set<Genre> genres = Collections.emptySet();
 
    @ManyToMany(mappedBy = "favoriteMovies")
-
-    private Set<User> usersFavorited;
+    private Set<User> usersFavorited = Collections.emptySet();
 
     public int getId() {
         return id;
@@ -60,20 +61,20 @@ public class Movie {
         this.title = title;
     }
 
-    public int getRelease_year() {
-        return release_year;
+    public String getRelease_date() {
+        return release_date;
     }
 
-    public void setRelease_year(int release_year) {
-        this.release_year = release_year;
+    public void setRelease_date(String release_date) {
+        this.release_date = release_date;
     }
 
-    public float getRating() {
-        return rating;
+    public float getPopularity() {
+        return popularity;
     }
 
-    public void setRating(float rating) {
-        this.rating = rating;
+    public void setPopularity(float popularity) {
+        this.popularity = popularity;
     }
 
     public String getOverview() {
@@ -84,20 +85,20 @@ public class Movie {
         this.overview = overview;
     }
 
-    public String getPoster_url() {
-        return poster_url;
+    public String getBackdrop_path() {
+        return backdrop_path;
     }
 
-    public void setPoster_url(String poster_url) {
-        this.poster_url = poster_url;
+    public void setBackdrop_path(String backdrop_path) {
+        this.backdrop_path = backdrop_path;
     }
 
-    public int getTmdb_id() {
-        return tmdb_id;
+    public int getTmdbId() {
+        return tmdbId;
     }
 
-    public void setTmdb_id(int tmdb_id) {
-        this.tmdb_id = tmdb_id;
+    public void setTmdbId(int tmdbId) {
+        this.tmdbId = tmdbId;
     }
 
     public Set<Genre> getGenres() {

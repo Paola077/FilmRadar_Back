@@ -32,7 +32,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests( authz -> authz
                         .requestMatchers(HttpMethod.POST,"/auth/logIn").permitAll()
                         .requestMatchers(HttpMethod.POST,"/auth/signIn").permitAll()
-                        .requestMatchers(HttpMethod.GET,"/auth/movies").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/auth/movie/").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/movie/fetch").permitAll()
                         .requestMatchers(HttpMethod.GET,"/auth/review").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/movies").authenticated()
                         .requestMatchers(HttpMethod.POST,"/api/rating").authenticated()

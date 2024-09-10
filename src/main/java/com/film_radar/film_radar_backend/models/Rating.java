@@ -23,10 +23,10 @@ public class Rating {
     @JoinColumn(name = "movie_id", nullable = false)
     private Movie movie;
 
-    @Column(nullable = false)
+    @Column(name = "popularity", nullable = false)
     @Min(1)
     @Max(10)
-    private int rating;
+    private int popularity;
 
     @Column(name = "create_at", nullable = false)
     private Long CreatedAt;
@@ -55,12 +55,14 @@ public class Rating {
         this.movie = movie;
     }
 
-    public int getRating() {
-        return rating;
+    @Min(1)
+    @Max(10)
+    public int getPopularity() {
+        return popularity;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setPopularity(@Min(1) @Max(10) int popularity) {
+        this.popularity = popularity;
     }
 
     public Long getCreatedAt() {
