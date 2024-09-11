@@ -74,8 +74,21 @@ public class MovieController {
                                                @RequestParam int userId,
                                                @RequestParam String reviewText,
                                                @RequestParam int popularity) {
-        ReviewDTO review = movieService.addReviewToMovie(movieId, reviewText, userId, popularity);
+        ReviewDTO review = reviewService.addReviewToMovie(movieId, reviewText, userId, popularity);
         return ResponseEntity.ok(review);
+    }
+
+    @PostMapping("/api/updateReview/{reviewId}")
+    public ResponseEntity<Boolean> updateReview(@PathVariable int reviewId,
+                                               @RequestParam String reviewText) {
+        Boolean wasUpdated = reviewService.updateReviewById(reviewId, reviewText);
+        return ResponseEntity.ok(wasUpdated);
+    }
+
+    @PostMapping("/api/deleteReview/{reviewId}")
+    public ResponseEntity<Boolean> deleteReview(@PathVariable int reviewId) {
+        Boolean wasDeleted = reviewService.deleteReviewById(reviewId);
+        return ResponseEntity.ok(wasDeleted);
     }
 
     @PostMapping("/api/{movieId}/favorites")

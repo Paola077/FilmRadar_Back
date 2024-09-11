@@ -69,7 +69,7 @@ public class MovieControllerTest {
     @Test
     public void testAddReview() {
         ReviewDTO reviewDTO = new ReviewDTO();
-        when(movieService.addReviewToMovie(1, "película recomendada", 1, 5)).thenReturn(reviewDTO);
+        when(reviewService.addReviewToMovie(1, "película recomendada", 1, 5)).thenReturn(reviewDTO);
 
         ResponseEntity<ReviewDTO> response = movieController.addReview(1, 1, "película recomendada", 5);
         assertEquals(200, response.getStatusCodeValue());
