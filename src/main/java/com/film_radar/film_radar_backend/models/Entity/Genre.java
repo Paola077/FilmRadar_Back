@@ -1,4 +1,4 @@
-package com.film_radar.film_radar_backend.models;
+package com.film_radar.film_radar_backend.models.Entity;
 
 import jakarta.persistence.*;
 

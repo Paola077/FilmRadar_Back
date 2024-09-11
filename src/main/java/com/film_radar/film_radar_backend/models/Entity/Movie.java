@@ -1,8 +1,7 @@
-package com.film_radar.film_radar_backend.models;
+package com.film_radar.film_radar_backend.models.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import java.text.DecimalFormat;
+
 import java.util.Collections;
 import java.util.Set;
 
@@ -19,7 +18,7 @@ public class Movie {
     private String title;
 
     @Column(name = "release_date", nullable = false)
-    private String release_date;
+    private String releaseDate;
 
     @Column(name = "popularity", nullable = false)
     private float popularity;
@@ -61,12 +60,12 @@ public class Movie {
         this.title = title;
     }
 
-    public String getRelease_date() {
-        return release_date;
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setRelease_date(String release_date) {
-        this.release_date = release_date;
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public float getPopularity() {

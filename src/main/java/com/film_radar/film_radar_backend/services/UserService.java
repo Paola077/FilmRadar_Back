@@ -1,6 +1,6 @@
 package com.film_radar.film_radar_backend.services;
 
-import com.film_radar.film_radar_backend.models.User;
+import com.film_radar.film_radar_backend.models.Entity.User;
 import com.film_radar.film_radar_backend.repositories.UserRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

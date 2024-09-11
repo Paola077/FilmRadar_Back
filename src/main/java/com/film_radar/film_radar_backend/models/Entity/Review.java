@@ -1,15 +1,12 @@
-package com.film_radar.film_radar_backend.models;
+package com.film_radar.film_radar_backend.models.Entity;
 
 import jakarta.persistence.*;
-import jakarta.persistence.UniqueConstraint;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Max;
 
 @Entity
-@Table(name = "ratings", uniqueConstraints = {
+@Table(name = "review", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"user_id", "movie_id"})
 })
-public class Rating {
+public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,13 +20,14 @@ public class Rating {
     @JoinColumn(name = "movie_id", nullable = false)
     private Movie movie;
 
+    @Column(name = "reviewText", nullable = false, columnDefinition = "TEXT")
+    private String reviewText;
+
     @Column(name = "popularity", nullable = false)
-    @Min(1)
-    @Max(10)
     private int popularity;
 
-    @Column(name = "create_at", nullable = false)
-    private Long CreatedAt;
+    @Column(name = "create_ad", nullable = false, updatable = false)
+    private Long createAd;
 
     public int getId() {
         return id;
@@ -55,21 +53,27 @@ public class Rating {
         this.movie = movie;
     }
 
-    @Min(1)
-    @Max(10)
+    public String getReviewText() {
+        return reviewText;
+    }
+
+    public void setReviewText(String reviewText) {
+        this.reviewText = reviewText;
+    }
+
     public int getPopularity() {
         return popularity;
     }
 
-    public void setPopularity(@Min(1) @Max(10) int popularity) {
+    public void setPopularity(int popularity) {
         this.popularity = popularity;
     }
 
-    public Long getCreatedAt() {
-        return CreatedAt;
+    public Long getCreateAd() {
+        return createAd;
     }
 
-    public void setCreatedAt(Long createdAt) {
-        CreatedAt = createdAt;
+    public void setCreateAd(Long createAd) {
+        this.createAd = createAd;
     }
 }
