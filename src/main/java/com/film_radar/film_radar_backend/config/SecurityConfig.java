@@ -40,6 +40,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET,"/auth/movies/{movieId}/reviews").permitAll()
                         .requestMatchers(HttpMethod.POST,"/api/{movieId}/rate").authenticated()
                         .requestMatchers(HttpMethod.POST,"/api/{movieId}/addReview").authenticated()
+                        .requestMatchers(HttpMethod.POST,"/api/updateReview/{reviewId}").authenticated()
+                        .requestMatchers(HttpMethod.POST,"/api/deleteReview/{reviewId}").authenticated()
                         .requestMatchers(HttpMethod.POST,"/api/{movieId}/favorites").authenticated()
                 ).addFilterAfter(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();

@@ -91,26 +91,6 @@ public class MovieService {
         return movieMapper.convertToDTO(updatedMovie);
     }
 
-
-    public ReviewDTO addReviewToMovie(int movieId, String reviewText, int userId, int popularity) {
-        Movie movie = movieRepository.findById(movieId)
-                .orElseThrow(() -> new RuntimeException("Película no encontrada con ID: " + movieId));
-
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("Usuario no encontrado con ID: " + userId));
-
-        Review review = new Review();
-        review.setMovie(movie);
-        review.setUser(user);
-        review.setReviewText(reviewText);
-        review.setPopularity(popularity);
-        review.setCreateAd(new Date().getTime());
-
-        Review savedReview = reviewRepository.save(review);
-
-        return movieMapper.convertReviewToDTO(savedReview);
-    }
-
     public void addToFavorites(int movieId, int userId) {
         Movie movie = movieRepository.findById(movieId)
                 .orElseThrow(() -> new RuntimeException("Película no encontrada con ID: " + movieId));
