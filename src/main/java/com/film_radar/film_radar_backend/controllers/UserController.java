@@ -1,8 +1,8 @@
 package com.film_radar.film_radar_backend.controllers;
 
 import com.film_radar.film_radar_backend.config.JWTAuthenticationConfig;
-import com.film_radar.film_radar_backend.models.Login;
-import com.film_radar.film_radar_backend.models.User;
+import com.film_radar.film_radar_backend.models.Entity.Login;
+import com.film_radar.film_radar_backend.models.Entity.User;
 import com.film_radar.film_radar_backend.services.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-package com.film_radar.film_radar_backend.models;
+package com.film_radar.film_radar_backend.models.DTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
