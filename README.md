@@ -60,6 +60,8 @@ Reseñas:
 
     GET /auth/movies/{movieId}/reviews: Obtiene las reseñas de una película específica.
     POST /api/{movieId}/addReview: Agregar una reseña a una película (requiere autenticación).
+    POST /api/updateReview/{reviewId}: Edita una reseña (requiere autenticación).
+    POST /api/deleteReview/{reviewId}: Elimina una reseña (requiere autenticación).
 
 Calificaciones:
 
